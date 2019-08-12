@@ -1,0 +1,9 @@
+stages:
+- name: compilation
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: soap-demo-v1.jar
+timeout: 60
+notification: {}
