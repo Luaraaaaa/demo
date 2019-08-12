@@ -4,6 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: soap-demo-v1.jar
+      tag: test/app:v1
+      registry: 127.0.0.1:34687
 timeout: 60
 notification: {}
