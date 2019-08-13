@@ -11,4 +11,8 @@ stages:
       buildContext: .
       tag: test/app:v2
       registry: 127.0.0.1:34687
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
 notification: {}
