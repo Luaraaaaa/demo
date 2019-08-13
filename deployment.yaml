@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: test-app-service
+spec:
+  selector:
+    app: test-app
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-v2
+  labels:
+    app: test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-app
+  template:
+    metadata:
+      labels:
+        app: test-app
+    spec:
+      imagePullSecrets:
+        - name: docker-registry-d6dd9d9c8-6dzqc
+      containers:
+        - name: test-app-test
+          image: test/app:v2
+          ports:
+            - containerPort: 8080
