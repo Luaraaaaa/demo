@@ -4,4 +4,11 @@ stages:
   - runScriptConfig:
       image: maven:3-jdk-8
       shellScript: mvn clean install
+- name: Publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: test/app:v2
+      registry: 127.0.0.1:34687
 notification: {}
